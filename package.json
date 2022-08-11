@@ -1,0 +1,19 @@
+{
+  "name": "afrogrids-backend",
+  "version": "1.0.0",
+  "description": "AfroGrids Backend Service",
+  "main": "functions/lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/shadownetz/afrogrids-backend.git"
+  },
+  "author": "shadownetz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shadownetz/afrogrids-backend/issues"
+  },
+  "homepage": "https://github.com/shadownetz/afrogrids-backend#readme"
+}
