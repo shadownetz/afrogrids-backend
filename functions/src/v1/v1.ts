@@ -5,6 +5,6 @@ import Access from "./middlewares/access";
 const main = express();
 
 main.use(new Access().apiAccess);
-main.use('/auth', auth);
+main.use("/", [auth]);
 
 export default main;
