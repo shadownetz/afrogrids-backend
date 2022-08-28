@@ -5,12 +5,14 @@ import * as dotenv from "dotenv";
 import * as admin from "firebase-admin";
 
 import v1 from "./v1/v1";
-import UserListener from "./v1/listeners/users";
+import UsersListener from "./v1/listeners/usersListener";
+import ChatsListener from "./v1/listeners/chatsListener";
 
 dotenv.config();
 admin.initializeApp();
 
-const userListener = new UserListener();
+const userListener = new UsersListener();
+const chatsListener = new ChatsListener();
 
 const app = express();
 
@@ -21,4 +23,6 @@ app.use("/v1", v1);
 
 exports.api = functions.https.onRequest(app);
 exports.disableUserInventories = userListener.disableUserInventories;
+exports.addMessageMetaInfo = chatsListener.addMessageMetaInfo;
+exports.addChatIdForUsers = chatsListener.addChatIdForUsers;
 // ./node_modules/.bin/eslint src --fix
