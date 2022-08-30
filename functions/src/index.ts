@@ -24,5 +24,4 @@ app.use("/v1", v1);
 exports.api = functions.https.onRequest(app);
 exports.disableUserInventories = userListener.disableUserInventories;
 exports.addMessageMetaInfo = chatsListener.addMessageMetaInfo;
-exports.addChatIdForUsers = chatsListener.addChatIdForUsers;
 // ./node_modules/.bin/eslint src --fix

@@ -15,26 +15,7 @@ class ChatsListener {
           lastMsgTimestamp: newData.createdAt,
         };
         await this.chatsReference.doc(params.chatId).collection("meta").doc("stats")
-            .update(updateData);
-      });
-
-  addChatIdForUsers = functions.firestore
-      .document("chats/{chatId}")
-      .onCreate(async (snapshot, context)=>{
-        const newData = snapshot.data();
-        const params = context.params;
-        await this.firestoreReference.usersMeta
-            .doc(newData.createdBy).collection("chat")
-            .doc(newData.createdFor).create({
-              chatId: params.chatId,
-              createdAt: this.firestoreReference.firestore.FieldValue.serverTimestamp(),
-            });
-        await this.firestoreReference.usersMeta
-            .doc(newData.createdFor).collection("chat")
-            .doc(newData.createdBy).create({
-              chatId: params.chatId,
-              createdAt: this.firestoreReference.firestore.FieldValue.serverTimestamp(),
-            });
+            .set(updateData);
       });
 }
 
