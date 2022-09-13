@@ -8,6 +8,7 @@ import v1 from "./v1/v1";
 import UsersListener from "./v1/listeners/usersListener";
 import ChatsListener from "./v1/listeners/chatsListener";
 import ReviewsListener from "./v1/listeners/reviewsListener";
+import OrdersListener from "./v1/listeners/ordersListener";
 
 dotenv.config();
 admin.initializeApp();
@@ -15,6 +16,7 @@ admin.initializeApp();
 const userListener = new UsersListener();
 const chatsListener = new ChatsListener();
 const reviewsListener = new ReviewsListener();
+const ordersListener = new OrdersListener();
 
 const app = express();
 
@@ -27,4 +29,5 @@ exports.api = functions.https.onRequest(app);
 exports.disableUserInventories = userListener.disableUserInventories;
 exports.addMessageMetaInfo = chatsListener.addMessageMetaInfo;
 exports.calcUserRatings = reviewsListener.calcUserRatings;
+exports.computeOrderFees = ordersListener.computeOrderFees;
 // ./node_modules/.bin/eslint src --fix

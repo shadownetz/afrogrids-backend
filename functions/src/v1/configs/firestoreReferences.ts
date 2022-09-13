@@ -7,6 +7,6 @@ class FirestoreReferences {
   usersRef = this.firestoreRef.collection("users");
   inventoriesRef = this.firestoreRef.collection("inventories");
   chatsRef = this.firestoreRef.collection("chats");
-  usersMeta = this.firestoreRef.collection("usersMeta");
+  ordersRef = this.firestoreRef.collection("orders");
 }
 export default FirestoreReferences;
