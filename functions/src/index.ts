@@ -30,4 +30,5 @@ exports.disableUserInventories = userListener.disableUserInventories;
 exports.addMessageMetaInfo = chatsListener.addMessageMetaInfo;
 exports.calcUserRatings = reviewsListener.calcUserRatings;
 exports.computeOrderFees = ordersListener.computeOrderFees;
+exports.saveDeliveries = ordersListener.saveDeliveries;
 // ./node_modules/.bin/eslint src --fix
