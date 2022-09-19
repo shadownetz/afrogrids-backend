@@ -19,11 +19,8 @@ export default class OrdersListener {
         const inventories: Array<InventoryModel> = (await Promise.all(inventoryPromises)).map((inventory)=>new InventoryModel().fromFirestore(inventory));
         for (let i=0; i < inventories.length; i++) {
           const orderAmt = inventories[i].price*order.items[i].count;
-          const adminFee = 0.1*orderAmt; // charge 10% fee per order transaction
-          const balance = orderAmt-adminFee;
           await this.usersReference.doc(inventories[i].createdBy).update({
-            outstandingBalance: this.firestoreReference.firestore.FieldValue.increment(adminFee),
-            availableBalance: this.firestoreReference.firestore.FieldValue.increment(balance),
+            outstandingBalance: this.firestoreReference.firestore.FieldValue.increment(orderAmt),
           });
         }
       });
@@ -44,6 +41,7 @@ export default class OrdersListener {
                   new DeliveryModel(
                       "",
                       inventories[i].createdBy,
+                      inventories[i].price,
                       inventories[i].id,
                       snapshot.id,
                       new Date(),

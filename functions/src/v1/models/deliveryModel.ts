@@ -8,6 +8,7 @@ export class DeliveryModel {
   inventoryId: string;
   orderId: string;
   createdAt: Date;
+  amount: number;
   deliveryCount: number;
   contactId: string;
   contactName: string;
@@ -15,10 +16,11 @@ export class DeliveryModel {
   contactAddress: string;
   status: string;
 
-  constructor(id?: string, providerId?: string, inventoryId?: string, orderId?: string, createdAt?: Date, deliveryCount?: number, contactId?: string, contactName?: string, contactPhone?: string, contactAddress?: string, status?: string)
-  constructor(id: string, providerId: string, inventoryId: string, orderId: string, createdAt: Date, deliveryCount: number, contactId: string, contactName: string, contactPhone: string, contactAddress: string, status: string) {
+  constructor(id?: string, providerId?:string, amount?:number, inventoryId?: string, orderId?: string, createdAt?: Date, deliveryCount?: number, contactId?: string, contactName?: string, contactPhone?: string, contactAddress?: string, status?: string)
+  constructor(id: string, providerId:string, amount:number, inventoryId: string, orderId: string, createdAt: Date, deliveryCount: number, contactId: string, contactName: string, contactPhone: string, contactAddress: string, status: string) {
     this.id = id;
     this.providerId = providerId;
+    this.amount = amount;
     this.inventoryId = inventoryId;
     this.orderId= orderId;
     this.createdAt = createdAt;
@@ -32,6 +34,7 @@ export class DeliveryModel {
 
   toJSON(): Record<string, any> {
     const {
+      amount,
       providerId,
       inventoryId,
       orderId,
@@ -44,6 +47,7 @@ export class DeliveryModel {
       status,
     } = this;
     return {
+      amount,
       providerId,
       inventoryId,
       orderId,
@@ -62,6 +66,7 @@ export class DeliveryModel {
     const data = delivery.data();
     this.id = delivery.id;
     if (data) {
+      this.amount = data["amount"];
       this.providerId = data["providerId"];
       this.createdAt = data["createdAt"].toDate();
       this.inventoryId = data["inventoryId"];

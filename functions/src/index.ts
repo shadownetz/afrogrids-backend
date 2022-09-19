@@ -9,6 +9,7 @@ import UsersListener from "./v1/listeners/usersListener";
 import ChatsListener from "./v1/listeners/chatsListener";
 import ReviewsListener from "./v1/listeners/reviewsListener";
 import OrdersListener from "./v1/listeners/ordersListener";
+import DeliveriesListener from "./v1/listeners/deliveriesListener";
 
 dotenv.config();
 admin.initializeApp();
@@ -17,6 +18,7 @@ const userListener = new UsersListener();
 const chatsListener = new ChatsListener();
 const reviewsListener = new ReviewsListener();
 const ordersListener = new OrdersListener();
+const deliveriesListener = new DeliveriesListener();
 
 const app = express();
 
@@ -31,4 +33,5 @@ exports.addMessageMetaInfo = chatsListener.addMessageMetaInfo;
 exports.calcUserRatings = reviewsListener.calcUserRatings;
 exports.computeOrderFees = ordersListener.computeOrderFees;
 exports.saveDeliveries = ordersListener.saveDeliveries;
+exports.creditProvider = deliveriesListener.creditProvider;
 // ./node_modules/.bin/eslint src --fix
