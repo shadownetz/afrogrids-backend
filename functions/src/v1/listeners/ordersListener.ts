@@ -45,6 +45,7 @@ export default class OrdersListener {
                       "",
                       inventories[i].createdBy,
                       inventories[i].id,
+                      snapshot.id,
                       new Date(),
                       order.items[i].count,
                       userDoc.id,

@@ -6,6 +6,7 @@ export class DeliveryModel {
   id: string;
   providerId: string;
   inventoryId: string;
+  orderId: string;
   createdAt: Date;
   deliveryCount: number;
   contactId: string;
@@ -14,11 +15,12 @@ export class DeliveryModel {
   contactAddress: string;
   status: string;
 
-  constructor(id?: string, providerId?: string, inventoryId?: string, createdAt?: Date, deliveryCount?: number, contactId?: string, contactName?: string, contactPhone?: string, contactAddress?: string, status?: string)
-  constructor(id: string, providerId: string, inventoryId: string, createdAt: Date, deliveryCount: number, contactId: string, contactName: string, contactPhone: string, contactAddress: string, status: string) {
+  constructor(id?: string, providerId?: string, inventoryId?: string, orderId?: string, createdAt?: Date, deliveryCount?: number, contactId?: string, contactName?: string, contactPhone?: string, contactAddress?: string, status?: string)
+  constructor(id: string, providerId: string, inventoryId: string, orderId: string, createdAt: Date, deliveryCount: number, contactId: string, contactName: string, contactPhone: string, contactAddress: string, status: string) {
     this.id = id;
     this.providerId = providerId;
     this.inventoryId = inventoryId;
+    this.orderId= orderId;
     this.createdAt = createdAt;
     this.deliveryCount = deliveryCount;
     this.contactId = contactId;
@@ -32,6 +34,7 @@ export class DeliveryModel {
     const {
       providerId,
       inventoryId,
+      orderId,
       createdAt,
       deliveryCount,
       contactId,
@@ -43,6 +46,7 @@ export class DeliveryModel {
     return {
       providerId,
       inventoryId,
+      orderId,
       createdAt: Timestamp.fromDate(createdAt),
       deliveryCount,
       contactId,
@@ -61,6 +65,7 @@ export class DeliveryModel {
       this.providerId = data["providerId"];
       this.createdAt = data["createdAt"].toDate();
       this.inventoryId = data["inventoryId"];
+      this.orderId = data["orderId"];
       this.deliveryCount = data["deliveryCount"];
       this.contactId = data["contactId"];
       this.contactName = data["contactName"];
